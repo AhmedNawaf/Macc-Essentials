@@ -1,7 +1,13 @@
-import { Image } from '@chakra-ui/react';
+import Hero from '@/components/collection/Hero';
+import ProductsSection from '@/components/collection/ProductsSection';
 
 function Collection() {
-  return <div>Collection</div>;
+  return (
+    <>
+      <Hero />
+      <ProductsSection />
+    </>
+  );
 }
 
 export default Collection;
