@@ -1,14 +1,4 @@
-import {
-  Box,
-  Grid,
-  GridItem,
-  Accordion,
-  AccordionButton,
-  AccordionIcon,
-  AccordionPanel,
-  AccordionItem,
-  Text,
-} from '@chakra-ui/react';
+import { Grid, GridItem, Accordion } from '@chakra-ui/react';
 import CustomAccordion from '../CustomAccordion';
 
 function ProductsSection() {
