@@ -2,19 +2,23 @@ import { Button, ButtonProps } from '@chakra-ui/react';
 
 interface Props {
   name: string;
-  handleSearchParams: (value: string | null) => void;
+  handleSearchParams: (key: string, value: string | null) => void;
   filterType: string | null;
 }
 
 function FilterButton({ name, handleSearchParams, filterType }: Props) {
   const sharedStyles: ButtonProps = {
-    py: '6',
-    px: '12',
+    py: '8',
+    px: '20',
     size: 'lg',
+    fontSize: 'xl',
   };
   return name === 'Reset' ? (
     filterType ? (
-      <Button {...sharedStyles} onClick={() => handleSearchParams(null)}>
+      <Button
+        {...sharedStyles}
+        onClick={() => handleSearchParams('type', null)}
+      >
         {name}
       </Button>
     ) : null
@@ -22,7 +26,7 @@ function FilterButton({ name, handleSearchParams, filterType }: Props) {
     <Button
       {...sharedStyles}
       colorScheme={`${filterType === name ? 'orange' : 'gray'}`}
-      onClick={() => handleSearchParams(name)}
+      onClick={() => handleSearchParams('type', name)}
     >
       {name}
     </Button>

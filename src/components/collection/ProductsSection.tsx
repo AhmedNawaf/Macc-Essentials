@@ -1,4 +1,12 @@
-import { Grid, GridItem, Accordion, HStack, Button } from '@chakra-ui/react';
+import {
+  Grid,
+  GridItem,
+  Accordion,
+  HStack,
+  Button,
+  Text,
+  Select,
+} from '@chakra-ui/react';
 import { useSearchParams } from 'react-router-dom';
 import CustomAccordion from '../CustomAccordion';
 import FilterButton from '../FilterButton';
@@ -7,12 +15,12 @@ function ProductsSection() {
   const [searchParams, setSearchParams] = useSearchParams();
   const filterType = searchParams.get('type');
 
-  function handleSearchParams(value: string | null) {
+  function handleSearchParams(key: string, value: string | null) {
     setSearchParams((prevSearchParams) => {
       if (!value) {
-        prevSearchParams.delete('type');
+        prevSearchParams.delete(key);
       } else {
-        prevSearchParams.set('type', value);
+        prevSearchParams.set(key, value);
       }
 
       return prevSearchParams;
@@ -33,8 +41,8 @@ function ProductsSection() {
           <CustomAccordion title='Categories'>This is test</CustomAccordion>
         </Accordion>
       </GridItem>
-      <GridItem colSpan={4} mt='6'>
-        <HStack ms='12' spacing='12'>
+      <GridItem colSpan={4} mt='6' ms='12'>
+        <HStack spacing='12'>
           {['Filter 1', 'Filter 2', 'Filter 3', 'Reset'].map((name) => (
             <FilterButton
               key={name}
@@ -43,6 +51,20 @@ function ProductsSection() {
               filterType={filterType}
             />
           ))}
+        </HStack>
+        <HStack my='16' justify='space-between'>
+          <Text textTransform='uppercase'>40 Products</Text>
+          <Select
+            w='25%'
+            size='lg'
+            placeholder='Sort'
+            onChange={(e) => handleSearchParams('sort', e.target.value)}
+          >
+            <option value='A-Z'>From A-Z</option>
+            <option value='Z-A'>From Z-A</option>
+            <option value='highest'>From the highest value</option>
+            <option value='lowest'>From the lowest value</option>
+          </Select>
         </HStack>
       </GridItem>
     </Grid>
