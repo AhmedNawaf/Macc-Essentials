@@ -1,6 +1,7 @@
 import { Grid, GridItem, Accordion, HStack, Button } from '@chakra-ui/react';
 import { useSearchParams } from 'react-router-dom';
 import CustomAccordion from '../CustomAccordion';
+import FilterButton from '../FilterButton';
 
 function ProductsSection() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -34,39 +35,14 @@ function ProductsSection() {
       </GridItem>
       <GridItem colSpan={4} mt='6'>
         <HStack ms='12' spacing='12'>
-          {['Filter 1', 'Filter 2', 'Filter 3', 'Reset'].map((name) => {
-            if (name === 'Reset') {
-              if (filterType)
-                return (
-                  <Button
-                    key={name}
-                    py='6'
-                    px='12'
-                    size='lg'
-                    onClick={() =>
-                      handleSearchParams(name === 'Reset' ? null : name)
-                    }
-                  >
-                    {name}
-                  </Button>
-                );
-              else return null;
-            }
-            return (
-              <Button
-                key={name}
-                py='6'
-                px='12'
-                size='lg'
-                colorScheme={`${filterType === name ? 'orange' : 'gray'}`}
-                onClick={() =>
-                  handleSearchParams(name === 'Reset' ? null : name)
-                }
-              >
-                {name}
-              </Button>
-            );
-          })}
+          {['Filter 1', 'Filter 2', 'Filter 3', 'Reset'].map((name) => (
+            <FilterButton
+              key={name}
+              name={name}
+              handleSearchParams={handleSearchParams}
+              filterType={filterType}
+            />
+          ))}
         </HStack>
       </GridItem>
     </Grid>
