@@ -9,7 +9,7 @@ interface Props {
 function FilterButton({ name, handleSearchParams, filterType }: Props) {
   const sharedStyles: ButtonProps = {
     py: '8',
-    px: '20',
+    px: '12',
     size: 'lg',
     fontSize: 'xl',
   };

@@ -22,3 +22,30 @@ export function getLocation(): Promise<LocationAPI> {
     );
   });
 }
+
+export interface FnParams {
+  name: string;
+  price: number;
+  type: string;
+}
+
+type SortOptions = 'A-Z' | 'Z-A' | 'highest' | 'lowest';
+
+export function sortProducts(
+  filteredProducts: FnParams[],
+  sortOption: SortOptions
+) {
+  switch (sortOption) {
+    case 'A-Z':
+      return filteredProducts.sort((a, b) => a.name.localeCompare(b.name));
+
+    case 'Z-A':
+      return filteredProducts.sort((a, b) => b.name.localeCompare(a.name));
+
+    case 'highest':
+      return filteredProducts.sort((a, b) => b.price - a.price);
+
+    case 'lowest':
+      return filteredProducts.sort((a, b) => a.price - b.price);
+  }
+}
