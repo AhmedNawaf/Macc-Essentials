@@ -16,6 +16,43 @@ import FilterButton from '../FilterButton';
 import { sortProducts, FnParams } from '@/utils';
 import { useMemo } from 'react';
 
+export function loader() {
+  const mockedData: FnParams[] = [
+    {
+      name: 'B',
+      price: 50,
+      type: 'Mocked',
+    },
+    {
+      name: 'C',
+      price: 170,
+      type: 'Not Mocked',
+    },
+    {
+      name: 'A',
+      price: 10,
+      type: 'Mocked',
+    },
+    {
+      name: 'D',
+      price: 20,
+      type: 'Not Mocked',
+    },
+    {
+      name: 'E',
+      price: 90,
+      type: 'Mocked',
+    },
+    {
+      name: 'F',
+      price: 100,
+      type: 'Not Mocked',
+    },
+  ];
+
+  return mockedData;
+}
+
 function ProductsSection() {
   const [searchParams, setSearchParams] = useSearchParams();
   const { type: filterType, sort: filterSort } = useTypedSearchParams();
@@ -101,40 +138,3 @@ function ProductsSection() {
 }
 
 export default ProductsSection;
-
-export function loader() {
-  const mockedData: FnParams[] = [
-    {
-      name: 'B',
-      price: 50,
-      type: 'Mocked',
-    },
-    {
-      name: 'C',
-      price: 170,
-      type: 'Not Mocked',
-    },
-    {
-      name: 'A',
-      price: 10,
-      type: 'Mocked',
-    },
-    {
-      name: 'D',
-      price: 20,
-      type: 'Not Mocked',
-    },
-    {
-      name: 'E',
-      price: 90,
-      type: 'Mocked',
-    },
-    {
-      name: 'F',
-      price: 100,
-      type: 'Not Mocked',
-    },
-  ];
-
-  return mockedData;
-}
